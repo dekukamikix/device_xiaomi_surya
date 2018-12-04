@@ -1,3 +1,7 @@
+# Audio
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.config.media_vol_steps=25
+
 # Bluetooth
 PRODUCT_PRODUCT_PROPERTIES += \
     ro.bluetooth.a2dp_offload.supported=false \
