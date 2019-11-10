@@ -108,8 +108,6 @@ BOARD_KERNEL_SEPARATED_DTBO := true
 BOARD_BOOTIMG_HEADER_VERSION := 2
 BOARD_MKBOOTIMG_ARGS := --header_version $(BOARD_BOOTIMG_HEADER_VERSION)
 
-KERNEL_LD := LD=ld.lld
-
 TARGET_KERNEL_ADDITIONAL_FLAGS := \
     HOSTCFLAGS="-fuse-ld=lld -Wno-unused-command-line-argument"
 TARGET_KERNEL_ADDITIONAL_FLAGS += LLVM=1
@@ -126,6 +124,7 @@ BOARD_KERNEL_CMDLINE += androidboot.usbcontroller=a600000.dwc3
 BOARD_KERNEL_CMDLINE += service_locator.enable=1
 BOARD_KERNEL_CMDLINE += lpm_levels.sleep_disabled=1
 BOARD_KERNEL_CMDLINE += loop.max_part=7
+BOARD_KERNEL_CMDLINE += cgroup.memory=nokmem,nosocket
 
 # Media
 TARGET_USES_ION := true
