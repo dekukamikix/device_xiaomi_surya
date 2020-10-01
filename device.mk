@@ -191,4 +191,8 @@ TARGET_COMMON_QTI_COMPONENTS := \
     telephony \
     wfd
 
+# Remove unwanted packages
+PRODUCT_PACKAGES += \
+    RemovePackages
+
 -include device/qcom/common/common.mk
