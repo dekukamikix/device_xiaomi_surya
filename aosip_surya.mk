@@ -9,6 +9,9 @@ $(call inherit-product, device/xiaomi/surya/device.mk)
 # Inherit some common AOSiP stuff.
 $(call inherit-product, vendor/aosip/config/common_full_phone.mk)
 
+# ANX Camera
+$(call inherit-product, vendor/ANXCamera/config.mk)
+
 # Device identifier. This must come after all inclusions.
 PRODUCT_NAME := aosip_surya
 PRODUCT_DEVICE := surya

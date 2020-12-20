@@ -10,5 +10,11 @@
     "repository": "BigTopKrazies/vendor_xiaomi_surya",
     "target_path": "vendor/xiaomi/surya",
     "branch": "11.0"
+  },
+  {
+    "remote": "github",
+    "repository": "thepsambit/vendor_ANXCamera",
+    "target_path": "vendor/ANXCamera",
+    "branch": "11"
   }
 ]
