@@ -13,8 +13,8 @@
   },
   {
     "remote": "github",
-    "repository": "thepsambit/vendor_ANXCamera",
+    "repository": "GtrCraft/vendor_ANXCamera",
     "target_path": "vendor/ANXCamera",
-    "branch": "11"
+    "branch": "11.0"
   }
 ]
