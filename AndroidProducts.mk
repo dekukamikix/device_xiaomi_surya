@@ -5,9 +5,9 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/aosip_surya.mk
+    $(LOCAL_DIR)/derp_surya.mk
 
 COMMON_LUNCH_CHOICES := \
-    aosip_surya-user \
-    aosip_surya-userdebug \
-    aosip_surya-eng
+    derp_surya-user \
+    derp_surya-userdebug \
+    derp_surya-eng
