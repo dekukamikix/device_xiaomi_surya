@@ -100,6 +100,7 @@ ifeq ($(TARGET_PREBUILT_KERNEL),)
   TARGET_KERNEL_CLANG_COMPILE := true
   TARGET_KERNEL_SOURCE := kernel/xiaomi/surya
 endif
+TARGET_KERNEL_CLANG_VERSION := silont
 
 # Platform
 TARGET_BOARD_PLATFORM_GPU := qcom-adreno618
