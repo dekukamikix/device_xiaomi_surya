@@ -152,6 +152,9 @@ PRODUCT_PRIVATE_SEPOLICY_DIRS += \
     device/qcom/sepolicy/generic/product/private \
     device/qcom/sepolicy/qva/product/private
 
+# Soong namespaces
+PRODUCT_SOONG_NAMESPACES += $(DEVICE_PATH)
+
 # Releasetools
 TARGET_RELEASETOOLS_EXTENSIONS := $(DEVICE_PATH)
 
