@@ -10,7 +10,7 @@ PRODUCT_PRODUCT_PROPERTIES += \
 
 # Display
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.sf.lcd_density=440
+    ro.sf.lcd_density=400
 
 # Media
 PRODUCT_PROPERTY_OVERRIDES += \
