@@ -9,8 +9,8 @@ $(call inherit-product, device/xiaomi/surya/device.mk)
 # Inherit some
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
-# Inherit some common DerpFest stuff.
-$(call inherit-product, vendor/derp/config/common_full_phone.mk)
+# Inherit some common PekoProjekt stuff.
+$(call inherit-product, vendor/peko/config/common_full_phone.mk)
 
 # Blur
 TARGET_USES_BLUR := true
@@ -25,7 +25,7 @@ TARGET_SCREEN_HEIGHT := 2400
 TARGET_SCREEN_WIDTH := 1080
 
 # Device identifier. This must come after all inclusions.
-PRODUCT_NAME := derp_surya
+PRODUCT_NAME := peko_surya
 PRODUCT_DEVICE := surya
 PRODUCT_BRAND := POCO
 PRODUCT_MODEL := POCO X3
