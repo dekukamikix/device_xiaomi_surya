@@ -14,6 +14,9 @@ $(call inherit-product, device/xiaomi/surya/device.mk)
 # Inherit some common DerpFest stuff.
 $(call inherit-product, vendor/derp/config/common_full_phone.mk)
 
+# Blur
+TARGET_USES_BLUR := true
+
 PRODUCT_NAME := derp_surya
 PRODUCT_DEVICE := surya
 PRODUCT_BRAND := POCO
