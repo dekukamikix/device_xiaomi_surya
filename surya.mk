@@ -15,7 +15,7 @@
 #
 
 # Inherit AOSP product configuration
-$(call inherit-product, device/xiaomi/surya/aosp_surya.mk)
+$(call inherit-product, device/xiaomi/surya/derp_surya.mk)
 
 # Remove AOSP prefix from product name
 PRODUCT_NAME := surya
