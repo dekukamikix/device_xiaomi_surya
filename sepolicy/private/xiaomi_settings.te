@@ -1,0 +1,7 @@
+type xiaomi_settings, domain;
+
+app_domain(xiaomi_settings)
+
+# Allow xiaomi_settings to read and write to sysfs_vibrator
+allow xiaomi_settings sysfs_vibrator:dir search;
+allow xiaomi_settings sysfs_vibrator:file rw_file_perms;

@@ -24,6 +24,7 @@ import android.os.PowerManager;
 
 import org.lineageos.settings.PowerSaveModeChangeReceiver;
 import org.lineageos.settings.dirac.DiracUtils;
+import org.lineageos.settings.haptic.HapticUtils;
 import org.lineageos.settings.thermal.ThermalUtils;
 import org.lineageos.settings.utils.RefreshRateUtils;
 
@@ -43,5 +44,6 @@ public class BootCompletedReceiver extends BroadcastReceiver {
 
         // Thermal Profiles
         ThermalUtils.initialize(context);
+        HapticUtils.restoreLevel(context);
     }
 }
