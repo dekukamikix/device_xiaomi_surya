@@ -34,6 +34,11 @@ on init && property:ro.boot.hwname=*
 on property:ro.boot.product.hardware.sku=surya
     enable vendor.nfc_hal_service
 
+on property:sys.boot_completed=1
+    # Allow system to adjust haptic level directly
+    chown system system /sys/devices/platform/soc/884000.i2c/i2c-3/3-005a/ulevel
+    chmod 0664 /sys/devices/platform/soc/884000.i2c/i2c-3/3-005a/ulevel
+
 service vendor.nfc_hal_service /vendor/bin/hw/android.hardware.nfc@1.2-service
     override
     class hal
