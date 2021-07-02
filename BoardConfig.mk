@@ -118,6 +118,7 @@ TARGET_KERNEL_CLANG_COMPILE := true
 TARGET_KERNEL_CLANG_VERSION := silont
 TARGET_KERNEL_CONFIG := surya_defconfig
 TARGET_KERNEL_SOURCE := kernel/xiaomi/surya
+TARGET_KERNEL_ADDITIONAL_FLAGS += LLVM=1
 
 BOARD_KERNEL_CMDLINE += androidboot.hardware=qcom androidboot.console=ttyMSM0
 BOARD_KERNEL_CMDLINE += androidboot.usbcontroller=a600000.dwc3
