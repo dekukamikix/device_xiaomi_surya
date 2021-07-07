@@ -1,12 +1,12 @@
 /**
  * Copyright (C) 2020 The LineageOS Project
- * <p>
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * <p>
- * http://www.apache.org/licenses/LICENSE-2.0
- * <p>
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -16,6 +16,7 @@
 package org.lineageos.settings.thermal;
 
 import android.annotation.Nullable;
+import android.app.ActionBar;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
@@ -29,10 +30,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SectionIndexer;
 import android.widget.Spinner;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import androidx.preference.PreferenceFragment;
@@ -48,7 +51,8 @@ import java.util.List;
 import java.util.Map;
 
 public class ThermalSettingsFragment extends PreferenceFragment
-        implements AdapterView.OnItemClickListener, ApplicationsState.Callbacks {
+        implements AdapterView.OnItemClickListener, ApplicationsState.Callbacks,
+        CompoundButton.OnCheckedChangeListener {
 
     private AllPackagesAdapter mAllPackagesAdapter;
     private ApplicationsState mApplicationsState;
@@ -60,6 +64,9 @@ public class ThermalSettingsFragment extends PreferenceFragment
     private ListView mUserListView;
 
     private ThermalUtils mThermalUtils;
+
+    private TextView mTextView;
+    private View mSwitchBar;
 
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
@@ -77,12 +84,15 @@ public class ThermalSettingsFragment extends PreferenceFragment
         mAllPackagesAdapter = new AllPackagesAdapter(getActivity());
 
         mThermalUtils = new ThermalUtils(getActivity());
+
+        final ActionBar actionBar = getActivity().getActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.thermal_layout, container, false);
+            Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.thermal, container, false);
     }
 
     @Override
@@ -94,9 +104,28 @@ public class ThermalSettingsFragment extends PreferenceFragment
     public void onViewCreated(final View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        boolean serviceEnabled = mThermalUtils.isServiceEnabled(getActivity());
+
         mUserListView = view.findViewById(R.id.thermal_list_view);
-        mUserListView.setAdapter(mAllPackagesAdapter);
-        mUserListView.setOnItemClickListener(this);
+
+        if (serviceEnabled) {
+            mUserListView.setAdapter(mAllPackagesAdapter);
+            mUserListView.setOnItemClickListener(this);
+        }
+
+        mTextView = view.findViewById(R.id.switch_text);
+        mTextView.setText(getString(serviceEnabled ?
+                R.string.switch_bar_on : R.string.switch_bar_off));
+
+        mSwitchBar = view.findViewById(R.id.switch_bar);
+        Switch switchWidget = mSwitchBar.findViewById(android.R.id.switch_widget);
+        switchWidget.setChecked(serviceEnabled);
+        switchWidget.setOnCheckedChangeListener(this);
+        mSwitchBar.setActivated(serviceEnabled);
+        mSwitchBar.setOnClickListener(v -> {
+            switchWidget.setChecked(!switchWidget.isChecked());
+            mSwitchBar.setActivated(switchWidget.isChecked());
+        });
     }
 
 
@@ -204,16 +233,12 @@ public class ThermalSettingsFragment extends PreferenceFragment
         switch (state) {
             case ThermalUtils.STATE_BENCHMARK:
                 return R.drawable.ic_thermal_benchmark;
-            case ThermalUtils.STATE_BROWSER:
-                return R.drawable.ic_thermal_browser;
             case ThermalUtils.STATE_CAMERA:
                 return R.drawable.ic_thermal_camera;
             case ThermalUtils.STATE_DIALER:
                 return R.drawable.ic_thermal_dialer;
             case ThermalUtils.STATE_GAMING:
                 return R.drawable.ic_thermal_gaming;
-            case ThermalUtils.STATE_STREAMING:
-                return R.drawable.ic_thermal_streaming;
             case ThermalUtils.STATE_DEFAULT:
             default:
                 return R.drawable.ic_thermal_default;
@@ -246,11 +271,9 @@ public class ThermalSettingsFragment extends PreferenceFragment
         private final int[] items = {
                 R.string.thermal_default,
                 R.string.thermal_benchmark,
-                R.string.thermal_browser,
                 R.string.thermal_camera,
                 R.string.thermal_dialer,
                 R.string.thermal_gaming,
-                R.string.thermal_streaming
         };
 
         private ModeAdapter(Context context) {
@@ -307,7 +330,6 @@ public class ThermalSettingsFragment extends PreferenceFragment
         public AllPackagesAdapter(Context context) {
             mInflater = LayoutInflater.from(context);
             mModesAdapter = new ModeAdapter(context);
-            mActivityFilter = new ActivityFilter(context.getPackageManager());
         }
 
         @Override
@@ -360,7 +382,7 @@ public class ThermalSettingsFragment extends PreferenceFragment
         }
 
         private void setEntries(List<ApplicationsState.AppEntry> entries,
-                                List<String> sections, List<Integer> positions) {
+                List<String> sections, List<Integer> positions) {
             mEntries = entries;
             mSections = sections.toArray(new String[sections.size()]);
             mPositions = new int[positions.size()];
@@ -382,9 +404,6 @@ public class ThermalSettingsFragment extends PreferenceFragment
                     mThermalUtils.writePackage(entry.info.packageName,
                             ThermalUtils.STATE_BENCHMARK);
                     break;
-                case ThermalUtils.STATE_BROWSER:
-                    mThermalUtils.writePackage(entry.info.packageName, ThermalUtils.STATE_BROWSER);
-                    break;
                 case ThermalUtils.STATE_CAMERA:
                     mThermalUtils.writePackage(entry.info.packageName, ThermalUtils.STATE_CAMERA);
                     break;
@@ -393,10 +412,6 @@ public class ThermalSettingsFragment extends PreferenceFragment
                     break;
                 case ThermalUtils.STATE_GAMING:
                     mThermalUtils.writePackage(entry.info.packageName, ThermalUtils.STATE_GAMING);
-                    break;
-                case ThermalUtils.STATE_STREAMING:
-                    mThermalUtils.writePackage(entry.info.packageName,
-                            ThermalUtils.STATE_STREAMING);
                     break;
             }
             notifyDataSetChanged();
@@ -477,6 +492,22 @@ public class ThermalSettingsFragment extends PreferenceFragment
                 }
             }
             return show;
+        }
+    }
+
+    @Override
+    public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+        mTextView.setText(getString(isChecked ? R.string.switch_bar_on : R.string.switch_bar_off));
+        mSwitchBar.setActivated(isChecked);
+
+        if (isChecked) {
+            ThermalUtils.startService(getActivity());
+            mUserListView.setAdapter(mAllPackagesAdapter);
+            mUserListView.setOnItemClickListener(this);
+        } else {
+            ThermalUtils.stopService(getActivity());
+            mUserListView.setAdapter(null);
+            mUserListView.setOnItemClickListener(null);
         }
     }
 }
