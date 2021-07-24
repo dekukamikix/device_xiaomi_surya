@@ -21,10 +21,14 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 # Inherit from surya device
 $(call inherit-product, device/xiaomi/surya/device.mk)
 
-# Inherit some common Lineage stuff.
-$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
+# Inherit some common exTHmUI stuff.
+$(call inherit-product, vendor/exthm/config/common_full_phone.mk)
 
-PRODUCT_NAME := lineage_surya
+# exTHmUI GAPPS
+EXTHM_GAPPS := true
+TARGET_GAPPS_ARCH := arm64
+
+PRODUCT_NAME := exthm_surya
 PRODUCT_DEVICE := surya
 PRODUCT_BRAND := POCO
 PRODUCT_MODEL := POCO X3 NFC
