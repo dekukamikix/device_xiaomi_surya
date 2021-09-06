@@ -8,3 +8,6 @@ allow init vendor_sysfs_graphics:file rw_file_perms;
 # Allow init to read and write to sysfs_vibrator
 allow init sysfs_vibrator:dir search;
 allow init sysfs_vibrator:file rw_file_perms;
+
+# Allow init to wrtie to sysfs_battery_supply
+allow init sysfs_battery_supply:file { setattr };
