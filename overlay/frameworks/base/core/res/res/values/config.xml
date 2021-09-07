@@ -550,4 +550,17 @@
     <string name="config_batDesCap">/sys/class/power_supply/bms/charge_full_design</string>
     <string name="config_batCurCap">/sys/class/power_supply/bms/charge_full</string>
     <bool name="config_supportBatteryHealth">true</bool>
+    
+    <!-- The default intensity level for haptic feedback. See
+         Settings.System.HAPTIC_FEEDBACK_INTENSITY more details on the constant values and
+         meanings. -->
+    <integer name="config_defaultHapticFeedbackIntensity">3</integer>
+    <!-- The default intensity level for notification vibrations. See
+         Settings.System.NOTIFICATION_VIBRATION_INTENSITY more details on the constant values and
+         meanings. -->
+    <integer name="config_defaultNotificationVibrationIntensity">3</integer>
+    <!-- The default intensity level for notification vibrations. See
+         Settings.System.RING_VIBRATION_INTENSITY more details on the constant values and
+         meanings. -->
+    <integer name="config_defaultRingVibrationIntensity">3</integer>
 </resources>
