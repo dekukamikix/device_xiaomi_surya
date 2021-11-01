@@ -7,8 +7,6 @@ LOCAL_MODULE_TAGS := optional
 LOCAL_OVERRIDES_PACKAGES := \
     AmbientSensePrebuilt \
     arcore \
-    Chrome \
-    Chrome-Stub \
     DevicePolicyPrebuilt \
     Drive \
     GoogleCamera \
