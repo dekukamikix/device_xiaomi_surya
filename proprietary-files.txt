@@ -656,6 +656,10 @@ vendor/firmware/a615_zap.mdt|0c5505dc3d8420ff4df6633939b2262d15d88171
 vendor/firmware/a618_gmu.bin|0c211ef8a3246d649a4ae52a926d128b61e3c264
 vendor/firmware/a630_sqe.fw|e25094f97b44244775cc38a9d909fba6bd4cf76b
 
+# Graphics (VulkanAPI Layers) From sunfish-user 12 SP1A.210812.015 7679548 release-keys 
+-vendor/app/adreno_graphics_driver/adreno_graphics_driver.apk
+-vendor/app/gpu_profiling_vulkan_layer/gpu_profiling_vulkan_layer.apk
+
 # IPA firmware
 vendor/firmware/ipa_fws.b00|bc93bd0d1ed662f475579a5d7e706b1ad970eb7c
 vendor/firmware/ipa_fws.b01|721baee785eefbcfca73019d4dc71cf359bb5da9
