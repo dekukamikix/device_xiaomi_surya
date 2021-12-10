@@ -5,9 +5,9 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/derp_surya.mk
+    $(LOCAL_DIR)/dot_surya.mk
 
 COMMON_LUNCH_CHOICES := \
-    derp_surya-user \
-    derp_surya-userdebug \
-    derp_surya-eng
+    dot_surya-user \
+    dot_surya-userdebug \
+    dot_surya-eng
