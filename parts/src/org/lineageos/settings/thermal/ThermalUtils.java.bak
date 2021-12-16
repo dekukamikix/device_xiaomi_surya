@@ -159,6 +159,8 @@ public final class ThermalUtils {
         }
     }
 
+<<<<<<< HEAD
+=======
     protected void setThermalProfileForce(int mode) {
         String state = THERMAL_STATE_DEFAULT;
 
@@ -180,6 +182,7 @@ public final class ThermalUtils {
         FileUtils.writeLine(THERMAL_SCONFIG, state);
     }
 
+>>>>>>> 8c646bb8a3e20edf5cb95a183ef79bc9d2062a27
     private void updateTouchModes(String packageName) {
         String values = mSharedPrefs.getString(packageName, null);
         resetTouchModes();

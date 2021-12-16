@@ -30,16 +30,24 @@ import android.content.IntentFilter;
 import android.content.res.Configuration;
 import android.os.IBinder;
 import android.os.RemoteException;
+<<<<<<< HEAD
+import android.util.Log;
+
+=======
 import android.provider.Settings;
 import android.util.Log;
 
 import java.util.Arrays;
 
+>>>>>>> 8c646bb8a3e20edf5cb95a183ef79bc9d2062a27
 public class ThermalService extends Service {
 
     private static final String TAG = "ThermalService";
     private static final boolean DEBUG = false;
+<<<<<<< HEAD
+=======
     private static final String SETTINGS_GAME_LIST = "gamespace_game_list";
+>>>>>>> 8c646bb8a3e20edf5cb95a183ef79bc9d2062a27
 
     private String mPreviousApp;
     private ThermalUtils mThermalUtils;

@@ -30,7 +30,10 @@
      have distinct intensity levels -->
     <bool name="config_vibration_supports_multiple_intensities">true</bool>
 
+<<<<<<< HEAD
+=======
     <!-- Whether to show refresh rate switches in display settings -->
     <bool name="config_show_refresh_rate_switch">true</bool>
 
+>>>>>>> 8c646bb8a3e20edf5cb95a183ef79bc9d2062a27
 </resources>

@@ -161,9 +161,26 @@ on charger
     setprop sys.usb.configfs 1
 
     start vendor.hvdcp_opti
+<<<<<<< HEAD
+    start vendor.thermal-engine
     start vendor.qcom-post-boot
     start vendor.power_off_alarm
 
+service vendor.thermal-engine /vendor/bin/thermal-engine
+    class main
+    user root
+    socket thermal-send-client stream 0666 system system
+    socket thermal-recv-client stream 0660 system system
+    socket thermal-recv-passive-client stream 0666 system system
+    socket thermal-send-rule stream 0660 system system
+    group root
+    writepid /dev/cpuset/system-background/tasks
+
+=======
+    start vendor.qcom-post-boot
+    start vendor.power_off_alarm
+
+>>>>>>> 8c646bb8a3e20edf5cb95a183ef79bc9d2062a27
 service vendor.hvdcp_opti /vendor/bin/hvdcp_opti
     class main
     user root

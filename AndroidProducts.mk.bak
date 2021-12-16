@@ -1,0 +1,22 @@
+#
+# Copyright (C) 2021 AOSP
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+
+PRODUCT_MAKEFILES := \
+<<<<<<< HEAD
+    $(LOCAL_DIR)/dot_surya.mk
+
+COMMON_LUNCH_CHOICES := \
+    dot_surya-user \
+    dot_surya-userdebug \
+    dot_surya-eng
+=======
+    $(LOCAL_DIR)/derp_surya.mk
+
+COMMON_LUNCH_CHOICES := \
+    derp_surya-user \
+    derp_surya-userdebug \
+    derp_surya-eng
+>>>>>>> 8c646bb8a3e20edf5cb95a183ef79bc9d2062a27

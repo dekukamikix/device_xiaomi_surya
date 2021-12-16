@@ -1,3 +1,9 @@
+<<<<<<< HEAD
+# Gboard
+ro.com.google.ime.kb_pad_port_b=1
+
+=======
+>>>>>>> 8c646bb8a3e20edf5cb95a183ef79bc9d2062a27
 # Graphics
 ro.hardware.egl=adreno
 ro.hardware.vulkan=adreno
